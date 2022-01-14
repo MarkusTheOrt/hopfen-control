@@ -1,0 +1,29 @@
+{
+    "$schema":"https://json.schemastore.org/package",
+    "private": true,
+    "name": "hopfen-control",
+    "version": "1.0.0",
+    "description": "Controls the Hopfen Hoehle",
+    "author": {
+        "name": "Markus Ort",
+        "email": "markus@ort.dev"
+    },
+    "license": "MIT",
+    "main": "build/index.js",
+    "scripts": {
+        "prestart": "tsc",
+        "start": "pm2 build/inedx.js -n \"Hopfen-Control\""
+    },
+    "devDependencies": {
+        "typescript": "^4.5.4"
+    },
+    "dependencies": {
+        "express": "^4.17.2",
+        "cors": "^2.8.5",
+        "body-parser": "^1.19.1",
+        "@types/express": "^4.17.13",
+        "@types/cors": "^2.8.12",
+        "@types/body-parser": "^1.19.2",
+        "rpio": "^2.4.2"
+    }
+}
