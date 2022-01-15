@@ -12,7 +12,7 @@
   "main": "build/index.js",
   "scripts": {
     "prestart": "tsc",
-    "start": "pm2 start build/index.js -name \"Hopfen-Control\"",
+    "start": "pm2 start build/index.js --name \"Hopfen-Control\"",
     "dev": "npm run prestart && node build/index.js"
   },
   "devDependencies": {
