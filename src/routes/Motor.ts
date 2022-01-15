@@ -3,22 +3,26 @@ import AppStorage from "../utilities/AppStorage";
 import rpio from "@utils/Rpio";
 
 const Motor = Router();
+const motorPins: number[] = [8, 10];
 
 Motor.post("/motor/toggle", (req, res) => {
   AppStorage.motor = !AppStorage.motor;
-  rpio.write(8, AppStorage.motor ? rpio.HIGH : rpio.LOW);
+  rpio.write(motorPins[0], AppStorage.motor ? rpio.HIGH : rpio.LOW);
+  rpio.write(motorPins[1], AppStorage.motor ? rpio.HIGH : rpio.LOW);
   res.json({ success: true, newState: AppStorage.motor });
 });
 
 Motor.post("/motor/off", (req, res) => {
   AppStorage.motor = false;
-  rpio.write(8, AppStorage.motor ? rpio.HIGH : rpio.LOW);
+  rpio.write(motorPins[0], AppStorage.motor ? rpio.HIGH : rpio.LOW);
+  rpio.write(motorPins[1], AppStorage.motor ? rpio.HIGH : rpio.LOW);
   res.json({ success: true, newState: AppStorage.motor });
 });
 
 Motor.post("/motor/on", (req, res) => {
   AppStorage.motor = true;
-  rpio.write(8, AppStorage.motor ? rpio.HIGH : rpio.LOW);
+  rpio.write(motorPins[0], AppStorage.motor ? rpio.HIGH : rpio.LOW);
+  rpio.write(motorPins[1], AppStorage.motor ? rpio.HIGH : rpio.LOW);
   res.json({ success: true, newState: AppStorage.motor });
 });
 
@@ -32,7 +36,8 @@ Motor.post("/motor/turn/:state", (req, res) => {
   } else {
     AppStorage.motor = false;
   }
-  rpio.write(8, AppStorage.motor ? rpio.HIGH : rpio.LOW);
+  rpio.write(motorPins[0], AppStorage.motor ? rpio.HIGH : rpio.LOW);
+  rpio.write(motorPins[1], AppStorage.motor ? rpio.HIGH : rpio.LOW);
   res.json({ success: true, newState: AppStorage.motor });
 });
 
