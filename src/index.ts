@@ -7,6 +7,7 @@ import rpio from "rpio";
 
 const server = Express();
 const motorPins: number[] = [8, 10];
+rpio.init();
 rpio.mode(motorPins[0], rpio.OUTPUT);
 rpio.mode(motorPins[1], rpio.OUTPUT);
 server.use(Motor);
