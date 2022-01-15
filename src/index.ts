@@ -6,13 +6,13 @@ import Express from "express";
 import rpio from "rpio";
 
 const server = Express();
-
+const motorPins: number[] = [8, 10];
+rpio.mode(motorPins[0], rpio.OUTPUT);
+rpio.mode(motorPins[1], rpio.OUTPUT);
 server.use(Motor);
 server.use(LED);
 
 (async () => {
-  rpio.mode(8, rpio.OUTPUT);
-
   server.listen(3000, () => {
     Logger.Log("Server listening on Port 3000");
   });
