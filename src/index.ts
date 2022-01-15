@@ -4,6 +4,7 @@ import Motor from "@routes/Motor";
 import LED from "@routes/Led";
 import Express from "express";
 import rpio from "@utils/Rpio";
+import AppStorage from "@utils/AppStorage";
 
 const server = Express();
 const motorPins: number[] = [8, 10];
@@ -15,6 +16,7 @@ server.use(LED);
 (async () => {
   rpio.write(motorPins[0], rpio.HIGH);
   rpio.write(motorPins[1], rpio.HIGH);
+  AppStorage.motor = true;
   server.listen(3000, () => {
     Logger.Log("Server listening on Port 3000");
   });
