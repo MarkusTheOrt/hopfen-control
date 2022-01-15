@@ -26,12 +26,10 @@ server.use(LED);
 
   while (true) {
     const val = rpio.read(buttonPin);
-    console.log(val);
-    if (val) {
-      rpio.write(motorPins[0], rpio.LOW);
-      rpio.write(motorPins[1], rpio.LOW);
-    }
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    rpio.write(motorPins[0], val);
+    rpio.write(motorPins[1], val);
+    AppStorage.motor = val ? true : false;
+    await new Promise((resolve) => setTimeout(resolve, 50));
   }
 })().catch((e) => {
   Logger.Stack(e);
