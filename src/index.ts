@@ -35,6 +35,7 @@ server.use(LED);
       AppStorage.recent = true;
       await new Promise((resolve) => setTimeout(resolve, 200));
       AppStorage.recent = false;
+      console.log("changed");
     }
     await new Promise((resolve) => setTimeout(resolve, 50));
   }
