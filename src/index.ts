@@ -25,19 +25,13 @@ server.use(LED);
   });
 
   while (true) {
-    if (AppStorage.recent) continue;
     const val = rpio.read(buttonPin);
 
-    if (AppStorage.lastButtonState != (val ? true : false)) {
-      rpio.write(motorPins[0], val);
-      rpio.write(motorPins[1], val);
-      AppStorage.motor = val ? true : false;
-      AppStorage.recent = true;
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      AppStorage.recent = false;
-      console.log(val ? true : false);
+    if (val == 0) {
+      AppStorage.motor = !AppStorage.motor;
+      rpio.write(motorPins[0], AppStorage.motor ? rpio.HIGH : rpio.LOW);
+      rpio.write(motorPins[1], AppStorage.motor ? rpio.HIGH : rpio.LOW);
     }
-    AppStorage.lastButtonState = val ? true : false;
     await new Promise((resolve) => setTimeout(resolve, 50));
   }
 })().catch((e) => {
