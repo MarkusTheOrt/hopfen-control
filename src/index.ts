@@ -25,13 +25,16 @@ server.use(LED);
   });
 
   while (true) {
+    if (AppStorage.recent) continue;
     const val = rpio.read(buttonPin);
     if (AppStorage.lastButtonState != (val ? true : false)) {
       AppStorage.lastButtonState = val ? true : false;
       rpio.write(motorPins[0], val);
       rpio.write(motorPins[1], val);
       AppStorage.motor = val ? true : false;
+      AppStorage.recent = true;
       await new Promise((resolve) => setTimeout(resolve, 200));
+      AppStorage.recent = false;
     }
     await new Promise((resolve) => setTimeout(resolve, 50));
   }
