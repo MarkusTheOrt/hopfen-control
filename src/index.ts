@@ -12,7 +12,7 @@ const buttonPin = 11;
 
 rpio.mode(motorPins[0], rpio.OUTPUT);
 rpio.mode(motorPins[1], rpio.OUTPUT);
-rpio.mode(buttonPin, rpio.INPUT);
+rpio.open(buttonPin, rpio.INPUT, rpio.PULL_UP);
 server.use(Motor);
 server.use(LED);
 
