@@ -8,8 +8,11 @@ import AppStorage from "@utils/AppStorage";
 
 const server = Express();
 const motorPins: number[] = [8, 10];
+const buttonPin = 11;
+
 rpio.mode(motorPins[0], rpio.OUTPUT);
 rpio.mode(motorPins[1], rpio.OUTPUT);
+rpio.mode(buttonPin, rpio.INPUT);
 server.use(Motor);
 server.use(LED);
 
@@ -20,6 +23,12 @@ server.use(LED);
   server.listen(3000, () => {
     Logger.Log("Server listening on Port 3000");
   });
+
+  while (true) {
+    const val = rpio.read(buttonPin);
+    AppStorage.motor = val ? true : false;
+    await new Promise((resolve) => setTimeout(resolve, 500));
+  }
 })().catch((e) => {
   Logger.Stack(e);
 });
