@@ -29,14 +29,13 @@ server.use(LED);
     const val = rpio.read(buttonPin);
 
     if (AppStorage.lastButtonState != (val ? true : false)) {
-      AppStorage.lastButtonState = val ? true : false;
       rpio.write(motorPins[0], val);
       rpio.write(motorPins[1], val);
       AppStorage.motor = val ? true : false;
       AppStorage.recent = true;
       await new Promise((resolve) => setTimeout(resolve, 500));
       AppStorage.recent = false;
-      console.log("changed");
+      console.log(val ? true : false);
     }
     AppStorage.lastButtonState = val ? true : false;
     await new Promise((resolve) => setTimeout(resolve, 50));
