@@ -13,6 +13,8 @@ server.use(Motor);
 server.use(LED);
 
 (async () => {
+  rpio.write(motorPins[0], rpio.HIGH);
+  rpio.write(motorPins[1], rpio.HIGH);
   server.listen(3000, () => {
     Logger.Log("Server listening on Port 3000");
   });
