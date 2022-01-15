@@ -1,12 +1,18 @@
 {
-  "$schema":"https://json.schemastore.org/tsconfig",
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-     "target": "ES2021",
-     "module": "commonjs",
-     "esModuleInterop": true,
-     "forceConsistentCasingInFileNames": true,
-     "strict": true,
-     "skipLibCheck": false,
-     "outDir": "./build"
- }   
+    "target": "ES2021",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": false,
+    "outDir": "./build",
+    "baseUrl": "src",
+    "paths": {
+      "@utils/*": ["utilities/*"],
+      "@routes/*": ["routes/*", "routes/"]
+    },
+    "moduleResolution": "Node"
+  }
 }
