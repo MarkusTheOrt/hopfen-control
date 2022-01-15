@@ -5,7 +5,7 @@ import rpio from "@utils/Rpio";
 const Motor = Router();
 
 Motor.post("/motor/toggle", (req, res) => {
-  AppStorage.motor != AppStorage.motor;
+  AppStorage.motor = !AppStorage.motor;
   rpio.write(8, AppStorage.motor ? rpio.HIGH : rpio.LOW);
   res.json({ success: true, newState: AppStorage.motor });
 });
