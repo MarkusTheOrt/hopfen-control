@@ -1,6 +1,6 @@
 import { Router } from "express";
 import AppStorage from "../utilities/AppStorage";
-import rpio from "rpio";
+import rpio from "@utils/Rpio";
 
 const Motor = Router();
 
