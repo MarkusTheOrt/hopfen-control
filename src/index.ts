@@ -33,7 +33,7 @@ server.use(LED);
       rpio.write(motorPins[1], val);
       AppStorage.motor = val ? true : false;
       AppStorage.recent = true;
-      await new Promise((resolve) => setTimeout(resolve, 200));
+      await new Promise((resolve) => setTimeout(resolve, 500));
       AppStorage.recent = false;
       console.log("changed");
     }
