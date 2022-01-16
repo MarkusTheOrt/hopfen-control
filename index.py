@@ -3,7 +3,7 @@ import time
 import board
 import neopixel
 
-num_pixels = 60
+num_pixels = 48
 
 pixels = neopixel.NeoPixel(board.D18, num_pixels)
 
@@ -57,4 +57,4 @@ while True:
   color_chase(BLUE, 0.1)
   color_chase(PURPLE, 0.1)
 
-  rainbow_cycle(0)
+  rainbow_cycle(0.05)

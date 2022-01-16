@@ -42,6 +42,7 @@ server.use(Motor);
       AppStorage.motor = !AppStorage.motor;
       rpio.write(motorPins[0], AppStorage.motor ? rpio.HIGH : rpio.LOW);
       rpio.write(motorPins[1], AppStorage.motor ? rpio.HIGH : rpio.LOW);
+      rpio.write(ledPin, AppStorage.motor ? rpio.HIGH : rpio.LOW);
       // Process button at a maxrate of 500msec.
       await new Promise((resolve) => setTimeout(resolve, 500));
     }
